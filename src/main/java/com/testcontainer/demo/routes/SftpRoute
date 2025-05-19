@@ -1,0 +1,21 @@
+package com.testcontainer.demo.routes;
+
+import org.springframework.integration.sftp.session.DefaultSftpSessionFactory;
+import org.springframework.stereotype.Service;
+
+import java.io.InputStream;
+
+@Service
+public class SftpRoute {
+    private final DefaultSftpSessionFactory sftpSessionFactory;
+
+    public SftpRoute(DefaultSftpSessionFactory sftpSessionFactory) {
+        this.sftpSessionFactory = sftpSessionFactory;
+    }
+
+    public InputStream fetchFile(String remoteFile) throws Exception {
+        try (var session = sftpSessionFactory.getSession()) {
+            return session.readRaw(remoteFile);
+        }
+    }
+}
