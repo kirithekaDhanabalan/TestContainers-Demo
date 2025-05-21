@@ -1,4 +1,4 @@
-package com.testcontainer.demo.routes;
+package com.testcontainer.demo.service;
 
 import com.testcontainer.demo.entity.User;
 import com.testcontainer.demo.repository.UserRepository;
